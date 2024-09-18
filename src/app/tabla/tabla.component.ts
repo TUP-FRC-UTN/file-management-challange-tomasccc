@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FileItem } from '../../models/file.item.model';
-import { FILE_LIST } from '../../data/file.storage';
 import { RouterOutlet } from '@angular/router';
 import { FileServiceService } from '../services/file-service.service';
 import { CommonModule } from '@angular/common';
@@ -10,29 +9,33 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterOutlet,CommonModule],
   templateUrl: './tabla.component.html',
-  styleUrl: './tabla.component.css',
-  providers: [FileServiceService]
+  styleUrl: './tabla.component.css'
 })
 export class TablaComponent {
-  files:FileItem[]= [];
-  title = 'file-management';
-  
-  checked:[] = [];
 
-  constructor(private fileService:FileServiceService) {
-    
+
+  checked:string[] = [];
+  constructor(public fileService:FileServiceService) {
   }
 
   ngOnInit() {
-    console.log(this.fileService.getFiles());
-    this.files = this.fileService.getFiles();
   }
-/*
-  Check(file:FileItem){
-    if(this.checked.includes(file)){
-      this.checked = this.checked.filter(item => item !== file);
+
+  ngOnChanges(){
+    console.log("change");
+  }
+
+  check(event:Event){
+    const target = event.target as HTMLInputElement;
+    if(target.checked){
+      this.fileService.addFileToErase(target.id);
+      console.log(this.fileService.getFilesToErase());
     }else{
-      this.checked.push(file);
+      this.fileService.removeFileToErase(target.id);
+      console.log(this.fileService.getFilesToErase());
     }
-  }*/
-}
+  }
+
+ 
+ }
+

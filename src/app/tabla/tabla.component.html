@@ -8,10 +8,11 @@
       </tr>
     </thead>
     <tbody>
-        @for (item of files; track $index) {
+        @for (item of fileService.files; track $index) {
             <tr>
                 <th scope="row">
-                    <input type="checkbox" class="form-check-input" name="checkbox" id="checkbox">
+                    <input type="checkbox" class="form-check-input" 
+                    name="checkbox" id="{{item.id}}" (click)="check($event)">
                 </th>
                 @if(item.name.length>10){
                     <td data-bs-toggle="tooltip" title="{{item.name}}">{{item.name.substring(0, 10)}}...</td>
