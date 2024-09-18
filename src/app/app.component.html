@@ -1,30 +1,16 @@
 <div class="container" style="margin: 0 auto;">
     <div class="container" id="nav">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container">
               <a class="navbar-brand" href="#">Archivos</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle bg-primary text-light rounded" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Acciones
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" (click)="Nuevo()" href="#">Nuevo</a></li>
-                      <li><a class="dropdown-item" href="#">Borrar</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+            <app-actions (accion)="Accion($event)"></app-actions>
+        </nav>
     </div>
     <hr>
     <div class="container">
-        <app-tabla></app-tabla>
+        <app-tabla ></app-tabla>
     </div>
     
 </div>
