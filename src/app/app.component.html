@@ -6,14 +6,31 @@
               data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-            <app-actions></app-actions>
+            <app-actions (action)="Accion($event)"></app-actions>
         </nav>
     </div>
     <hr>
     <div class="container">
-        <app-tabla></app-tabla>
+        @if(mostrarForm){
+            <app-tabla [files]="fileService.files"></app-tabla>
+            @if(mostrarConfirmar){
+                <form #myForm="ngForm">
+                    <div class="form-group row" style="align-items: center;
+                    border: 2px solid rgb(238, 177, 46); border-radius: 10%;">
+                        <div class="container" style="text-align: center;">
+                            <label class="" for="buton">¿Está seguro de querer eliminar más de un archivo?</label>
+                        </div>
+                        <button class="btn btn-primary col-6" style="width: 125px;
+                        margin: 0 auto;" name="button" (click)="BorrarFiles()">Sí</button>
+                        <button class="btn btn-secondary col-6" style="margin: 0 auto;
+                        width:125px;" name="button" (click)="NoBorrarFiles()">No</button>
+                    </div>
+                </form>
+            }
+        }@else {
+            <app-form></app-form>
+        }
     </div>
-    
 </div>
 
 

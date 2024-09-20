@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FileItem } from '../../models/file.item.model';
 import { FILE_LIST } from '../../data/file.storage';
-import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,9 +8,13 @@ export class FileServiceService {
 
   files: FileItem[] = FILE_LIST;
   public filesToErase: string[] = [];
+  public filesErased: string[] = [];
 
   
-  constructor() { }
+  constructor() { 
+    this.files.sort((a,b)=> a.name.localeCompare(b.name));
+  }
+
 
   getFiles(){
     return this.files;
@@ -30,7 +33,9 @@ export class FileServiceService {
   }
 
   BorrarFiles(){
-    console.log(this.filesToErase);
+    this.files = this.files.filter(item => !this.filesToErase.includes(item.id));
+    this.filesErased = this.filesErased.concat(this.filesToErase);
+    this.filesToErase = [];
   }
 
 }

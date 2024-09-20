@@ -1,26 +1,32 @@
 import { FileItem, FileOwner, FileType } from '../models/file.item.model';
 
 const owner1: FileOwner = {
+  id: 1,
   name: 'FR',
   avatarUrl: 'assets/owners/fr.png',
 };
 const owner2: FileOwner = {
+  id: 2,
   name: 'AS',
   avatarUrl: 'assets/owners/as.png',
 };
 const owner3: FileOwner = {
+  id: 3,
   name: 'DM',
   avatarUrl: 'assets/owners/dm.png',
 };
 const owner4: FileOwner = {
+  id: 4,
   name: 'MS',
   avatarUrl: 'assets/owners/ms.png',
 };
 const owner5: FileOwner = {
+  id: 5,
   name: 'PB',
   avatarUrl: 'assets/owners/pb.png',
 };
 const owner6: FileOwner = {
+  id: 6,
   name: 'PK',
   avatarUrl: 'assets/owners/pk.png',
 };

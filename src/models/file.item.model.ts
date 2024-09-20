@@ -8,6 +8,7 @@ export interface FileItem {
 }
 
 export interface FileOwner {
+  id: number;
   name: string;
   avatarUrl: string;
 }

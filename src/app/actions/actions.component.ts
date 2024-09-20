@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FileServiceService } from '../services/file-service.service';
 
 @Component({
   selector: 'app-actions',
@@ -9,17 +8,19 @@ import { FileServiceService } from '../services/file-service.service';
   styleUrl: './actions.component.css'
 })
 export class ActionsComponent {
+  @Output() action = new EventEmitter();
 
-  constructor(public fileService:FileServiceService) {
+  constructor() {
   
   }
   
   Nuevo(){
+    this.action.emit('Nuevo');
   }
 
   Borrar(){
-    console.log(this.fileService.filesToErase);
-    this.fileService.BorrarFiles();
+    this.action.emit('Borrar');
+    
   }
   
 }

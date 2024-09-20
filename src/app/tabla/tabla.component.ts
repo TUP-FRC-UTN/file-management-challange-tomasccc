@@ -14,15 +14,21 @@ import { CommonModule } from '@angular/common';
 export class TablaComponent {
 
 
+  @Input() files: FileItem[] = [];
   checked:string[] = [];
   constructor(public fileService:FileServiceService) {
+    this.files = this.fileService.files;
   }
 
   ngOnInit() {
+    this.files = this.fileService.files;
   }
+
+
 
   ngOnChanges(){
     console.log("change");
+    console.log(this.fileService.filesErased);
   }
 
   check(event:Event){
